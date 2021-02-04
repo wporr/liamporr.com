@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './main.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home, About, Header, Page } from './App';
 import { pages } from './content.js';
@@ -9,7 +9,6 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
     <div class="vertical">
     <div class="horizontal" >
-      <p class="spaceCowboy">See You Space Cowboy</p>
       <BrowserRouter>
         <div class="vertical">
           <Header/>
@@ -22,7 +21,6 @@ ReactDOM.render(
           </Switch>
         </div>
       </BrowserRouter>
-      <p class="spaceCowboy">See You Space Cowboy</p>
     </div>
     </div>,
   document.getElementById('root')

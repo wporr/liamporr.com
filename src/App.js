@@ -5,12 +5,14 @@ import leaves from './leaves.png';
 //import line1 from './line1.png';
 import line2 from './line2.png';
 import { Link } from 'react-router-dom';
-import './App.css';
+import './main.css';
 
 const Header = () => (
+  <div class="nav">
   <Link to='/' style={{float: 'left', margin:'20px'}}>
     <img src={line2} height="75px" alt="logo"/>
   </Link>
+  </div>
 );
 
 const Home = () => {
@@ -62,7 +64,7 @@ class Page extends React.Component {
     console.log(this.markdown);
 
     return (
-      <section>
+      <section class="content">
         <article dangerouslySetInnerHTML={{__html: markdown}}></article>
       </section>
     );
