@@ -1,25 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, About, Header } from './App';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Home, About, Header, Page } from './App';
+import { pages } from './content.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Header/>
-      <Home/>
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/about" component={About}/>
-    </Switch>
-  </Router>,
+    <div class="vertical">
+    <div class="horizontal" >
+      <p class="spaceCowboy">See You Space Cowboy</p>
+      <BrowserRouter>
+        <div class="vertical">
+          <Header/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/journaling">
+              <Page mdFile={pages.journaling} />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
+      <p class="spaceCowboy">See You Space Cowboy</p>
+    </div>
+    </div>,
   document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+//
 reportWebVitals();
 
 // ----- React tutorial code --- //
