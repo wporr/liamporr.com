@@ -32,18 +32,40 @@ class EmailForm extends React.Component {
   }
 
   handleSubmit(event) {
-    //stuff
-    console.log("submitted");
+    fetch("http://localhost:8000/subscribe", {headers: {'Content-Type': 'application/json'}, method: 'POST', body: JSON.stringify(this.state)})
+     .then(response => {
+        console.log(response);
+        return response.text();
+      })
+      .then(text => {
+        this.setState({
+          markdown: marked(text),
+          mdFile: this.state.mdFile,
+        })
+      });
+
+  }
+
+  onNameChange(event) {
+    this.setState({
+      name: event.target.value
+    });
+  }
+
+  onEmailChange(event) {
+    this.setState({
+      email: event.target.value
+    });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
           <p style={{fontSize: 'small', textAlign: 'center'}}><i>Can I sing to you?</i></p>
           <div class="horizontal">
-            <input id="name" placeholder="Liam Porr"/>
-            <input type="email" placeholder="liam@sadb.oys" required/>
+            <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
+            <input type="email" placeholder="liam@sadb.oys" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
             <button type="submit" className="btn movable btn-special">Yes.</button>
           </div>
         </div>
@@ -61,7 +83,7 @@ const Home = () => {
       </div>
       <div style={{display: 'flex', flexDirection: 'column'}}>
         <Link to='/about'>About</Link>
-        <Link to='/journaling'>Journaling</Link>
+        <Link to='./journaling'>Journaling</Link>
       </div>
     </div>
   )
