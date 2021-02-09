@@ -37,13 +37,6 @@ class EmailForm extends React.Component {
         console.log(response);
         return response.text();
       })
-      .then(text => {
-        this.setState({
-          markdown: marked(text),
-          mdFile: this.state.mdFile,
-        })
-      });
-
   }
 
   onNameChange(event) {
