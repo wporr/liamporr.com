@@ -6,6 +6,10 @@ const util = require("util");
 const debug = require("debug");
 const readline = require("readline");
 
+/* Globals */
+const emailAddress = 'liam@liamporr.com';
+const domain = "localhost:8000";
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -14,7 +18,6 @@ const rl = readline.createInterface({
 const question = util.promisify(rl.question).bind(rl);
 
 /* Connect to email client */
-emailAddress = 'liam@liamporr.com';
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -96,6 +99,11 @@ function parseFile(fileName) {
 /* Function to send newsletter */
 async function sendNewsletter(receivers, title, body) {
   for (const r of receivers) {
+    const unsubscribeLink = "<a href='http://" + domain +
+      "/unsubscribe/?email=" + r.email +
+      "' style='color: #888'>Unsubscribe</a>";
+    body += "\n" + unsubscribeLink;
+
     var mailOptions = {
       from: emailAddress,
       to: r.email,
@@ -109,7 +117,7 @@ async function sendNewsletter(receivers, title, body) {
         items.accepted[0] != r.email) {
       console.error("Error, email not accepted");
       debug("items rejected: ");
-      debug(items);
     }
+    debug(toString(items));
   }
 }

@@ -18,7 +18,18 @@ MongoClient.connect(connectionString,
       .then(result => {
         console.log(result);
       }).catch(error => console.error(error));
+  });
 
+  /* Request handler for unsubscribe */
+  router.get('/unsubscribe', function(req, res, next) {
+    emailCollection.deleteOne(
+      { email: req.query.email }
+    )
+      .then(result => {
+        console.log("user " + req.query.email + " unsubscribed");
+      }).catch(error => console.error(error));
+
+    res.send("unsubscribed");
   });
 });
 

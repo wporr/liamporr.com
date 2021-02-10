@@ -1,5 +1,7 @@
 # Journaling
 
+![image](https://image.shutterstock.com/image-vector/example-red-square-grunge-stamp-260nw-327662909.jpg)
+
 I began to keep a journal because I caught myself too often re-learning lessons from the past —  making the same mistakes in different ways. So, I started to keep track of what I was thinking. After a year of doing this, I’ve developed a system for recognizing patterns in my behavior. It is only now with this system that I’ve begun to truly understand myself.
 
 In this process, your journal becomes a tool, one that allows you to see your unconscious self in action, the part of your brain that makes choices you didn’t agree to, often bad ones. It evades your control, at least for now.
