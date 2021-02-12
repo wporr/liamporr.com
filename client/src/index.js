@@ -7,11 +7,9 @@ import { pages } from './content.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <div class="vertical">
-    <div class="horizontal" >
       <BrowserRouter>
-        <div class="vertical">
           <Header/>
+          <hr class="slant"/>
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
@@ -19,10 +17,7 @@ ReactDOM.render(
               <Page mdFile={pages.journaling} />
             </Route>
           </Switch>
-        </div>
-      </BrowserRouter>
-    </div>
-    </div>,
+      </BrowserRouter>,
   document.getElementById('root')
 );
 

@@ -31,9 +31,17 @@ code {
   flex-direction: column;
 }
 
+.overlay {
+  width: calc(100% - 30px);
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
 .content {
   width: calc(100% - 30px);
-  max-width: 970px;
+  max-width: 800px;
   margin: auto;
 }
 

@@ -10,13 +10,12 @@ import { Link } from 'react-router-dom';
 import './main.css';
 
 const Header = () => (
-  <div id="nav">
-  <Link to='/' style={{float: 'left', }}>
-    <img src={line2} height="75px" alt="logo"/>
-  </Link>
-  <EmailForm/>
-  <hr class="slant"/>
-  </div>
+  <header class="overlay" style={{maxWidth: "700px"}}>
+    <Link to='/'>
+      <img src={line2} height="75px" alt="logo"/>
+    </Link>
+    <EmailForm/>
+  </header>
 );
 
 class EmailForm extends React.Component {
@@ -70,15 +69,17 @@ class EmailForm extends React.Component {
 const Home = () => {
 
   return(
-    <div className="App" style={{display: 'flex', flexDirection: 'row'}}>
-      <div>
-        <img src={leaves} height="700px" alt="beautiful drawing"/>
+    <main>
+      <div class="overlay">
+        <div>
+          <img src={leaves} height="700px" alt="beautiful drawing"/>
+        </div>
+        <div class="vertical">
+          <Link to='/about'>About</Link>
+          <Link to='./journaling'>Journaling</Link>
+        </div>
       </div>
-      <div style={{display: 'flex', flexDirection: 'column'}}>
-        <Link to='/about'>About</Link>
-        <Link to='./journaling'>Journaling</Link>
-      </div>
-    </div>
+    </main>
   )
 };
 
