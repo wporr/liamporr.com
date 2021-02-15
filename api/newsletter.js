@@ -35,6 +35,8 @@ MongoClient.connect(connectionString,
   { useUnifiedTopology: true })
   .then(async client => {
     console.log("connected to database");
+    const db = await client.db(database);
+    receivers = await db.collection('emails').find().toArray()
 
     /* Read the content to be sent */
     fileName = process.argv[2]; // 0 is 'node', 1 is js file
@@ -42,23 +44,29 @@ MongoClient.connect(connectionString,
     const { title, body } = parseFile(fileName);
 
     /* Confirm the info before sending */
-    const answer = await question(`Title: ${title}. Confirm sending? (y/n) `);
-
-    if (answer.toLowerCase() != 'y') {
-      console.log("aborted.");
+    var answer = await question(`Title: ${title}. Send test email? (y/n) `);
+    if (answer.toLowerCase() == 'y') {
+      try {
+        await sendNewsletter([{email: emailAddress}], title, marked(body));
+      } catch(error) {
+        console.error(error)
+      }
       process.exit();
     }
 
-    try {
-      console.log("sending emails");
-      const db = await client.db(database);
-      receivers = await db.collection('emails').find().toArray()
+    answer = await question(`Sending prod email. Confirm sending? (y/n) `);
+    if (answer.toLowerCase() == 'y') {
+      try {
+        console.log("sending emails");
 
-      /* Send the emails */
-      // Marked converts the markdown body to html
-      await sendNewsletter(receivers, title, marked(body));
-    } catch(error) {
-      console.error(error)
+        /* Send the emails */
+        // Marked converts the markdown body to html
+        await sendNewsletter(receivers, title, marked(body));
+      } catch(error) {
+        console.error(error)
+      }
+    } else {
+      console.log("aborted.");
     }
 
     process.exit();
