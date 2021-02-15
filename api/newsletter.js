@@ -9,6 +9,7 @@ const escape = require("escape-html");
 
 /* Globals */
 const emailAddress = 'liam@liamporr.com';
+const displayName = "Liam's newsletter";
 const domain = "http://localhost:8000";
 
 const rl = readline.createInterface({
@@ -117,7 +118,7 @@ async function sendNewsletter(receivers, title, body) {
     body += "\n" + trackerImg;
 
     var mailOptions = {
-      from: emailAddress,
+      from: displayName + " <" + emailAddress + ">",
       to: r.email,
       subject: title,
       html: body
