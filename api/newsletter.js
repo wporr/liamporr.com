@@ -5,10 +5,11 @@ const fs = require("fs");
 const util = require("util");
 const debug = require("debug");
 const readline = require("readline");
+const escape = require("escape-html");
 
 /* Globals */
 const emailAddress = 'liam@liamporr.com';
-const domain = "localhost:8000";
+const domain = "http://localhost:8000";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -99,10 +100,13 @@ function parseFile(fileName) {
 /* Function to send newsletter */
 async function sendNewsletter(receivers, title, body) {
   for (const r of receivers) {
-    const unsubscribeLink = "<a href='http://" + domain +
+    const unsubscribeLink = "<a href='" + domain +
       "/unsubscribe/?email=" + r.email +
       "' style='color: #888'>Unsubscribe</a>";
+    const trackerImg = "<img height='0' width='0' src='" + domain +
+      "/open?post=" + escape(title) + "'/>";
     body += "\n" + unsubscribeLink;
+    body += "\n" + trackerImg;
 
     var mailOptions = {
       from: emailAddress,

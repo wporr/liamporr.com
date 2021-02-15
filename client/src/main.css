@@ -95,10 +95,6 @@ input {
   border-radius: 0;
 }
 
-/* inspired by https://github.com/thesephist/blocks.css/blob/master/src/blocks.css */
-.movable {
-}
-
 #nav {
   margin: 20px;
 }

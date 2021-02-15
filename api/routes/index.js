@@ -23,11 +23,12 @@ MongoClient.connect(connectionString,
   console.log("connected to database");
   const db = client.db(database);
   const emailCollection = db.collection('emails');
+  const statsCollection = db.collection('stats');
 
   /* Request handler for subscriptions */
   router.post('/subscribe', function(req, res, next) {
     if (!("email" in req.body)) {
-      console.error("Subscription calll with no email!");
+      console.error("Subscription call with no email!");
       return;
     }
 
@@ -83,6 +84,20 @@ MongoClient.connect(connectionString,
         });
       }).catch(error => console.error(error));
     res.send("unsubscribed");
+  });
+
+  /* Updating stats for newsletter */
+  router.get('/open', function(req, res, next) {
+    if (!("post" in req.query)) {
+      console.error("'/open' get request with no post parameter");
+      return;
+    }
+    statsCollection.updateOne(
+      { post: req.query.post },
+      { $inc: { count: 1} },
+      { upsert: true },
+    ).catch(error => console.error(error));
+    res.send("opened");
   });
 });
 
