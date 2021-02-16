@@ -37,7 +37,7 @@ MongoClient.connect(connectionString,
   .then(async client => {
     console.log("connected to database");
     const db = await client.db(database);
-    receivers = await db.collection('emails').find().toArray()
+    receivers = await db.collection('emails').find().toArray();
 
     /* Read the content to be sent */
     fileName = process.argv[2]; // 0 is 'node', 1 is js file

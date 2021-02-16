@@ -19,7 +19,7 @@ database = "websiteData"
 connectionString = `mongodb+srv://wporr:${process.env.ATLAS_PW}@mailinglist.wsoci.mongodb.net/${database}?retryWrites=true&w=majority`
 MongoClient.connect(connectionString,
   { useUnifiedTopology: true })
-  .then(client => {
+  .then(async client => {
   console.log("connected to database");
   const db = client.db(database);
   const emailCollection = db.collection('emails');
@@ -98,6 +98,19 @@ MongoClient.connect(connectionString,
       { upsert: true },
     ).catch(error => console.error(error));
     res.send("opened");
+  });
+
+  /* Check stats for newsletter */
+  router.get('/stats', async function(req, res, next) {
+    const stats = await statsCollection.find().toArray();
+    const subs = await emailCollection.count();
+
+    out = "";
+    for (const post of stats) {
+      const openRate = (post.count / subs) * 100;
+      out += "<p>" + post.post + ": " + openRate.toString() + "%</p>";
+    }
+    res.send(out);
   });
 });
 
