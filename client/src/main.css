@@ -78,7 +78,8 @@ code {
 }
 
 .slant {
-  transform: skewY(-.3deg);
+  transform: skewY(.5deg);
+  max-width: 900px;
 }
 
 hr {

@@ -1,8 +1,8 @@
 import React from 'react';
 import marked from 'marked';
 import Path from 'path';
-import leaves from './leaves.png';
 import drip from './drip.webp';
+import girl from './girl.png';
 import holo from './holo.png';
 //import line1 from './line1.png';
 import line2 from './line2.png';
@@ -11,7 +11,7 @@ import './main.css';
 
 const Header = () => (
   <header class="overlay" style={{maxWidth: "700px"}}>
-    <Link to='/'>
+    <Link to='/' style={{marginRight: "5ex"}}>
       <img src={line2} height="75px" alt="logo"/>
     </Link>
     <EmailForm/>
@@ -71,9 +71,7 @@ const Home = () => {
   return(
     <main>
       <div class="overlay">
-        <div>
-          <img src={leaves} height="700px" alt="beautiful drawing"/>
-        </div>
+        <img src={girl} style={{maxHeight: "600px", minWidth: "100px"}} alt="beautiful drawing"/>
         <div class="vertical">
           <Link to='/about'>About</Link>
           <Link to='./journaling'>Journaling</Link>
