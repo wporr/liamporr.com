@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,600&display=swap');
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -22,10 +22,6 @@ code {
   color: red;
 }
 
-.plainLink {
-  text-decoration: underline;
-}
-
 .plainLink::after {
   background: none;
 }
@@ -33,21 +29,22 @@ code {
 a {
   display: inline-block;
   position: relative;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
   color: inherit;
   z-index: 1;
 }
 
-a::after {
+/*a::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: .07em;
   height: .1em;
   width: 100%;
-  background: linear-gradient(271deg, #ffc1e6, #add0ff, #91f5ff, #fffedb);;
+  background: linear-gradient(90deg, #ffafde, #add0ff, #7ef3ff);
   z-index: -1;
-}
+} */
 
 .horizontal {
   margin: auto;
@@ -63,7 +60,7 @@ a::after {
 
 .overlay {
   width: calc(100% - 30px);
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   display: flex;
   flex-direction: row;

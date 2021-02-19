@@ -12,10 +12,40 @@ ReactDOM.render(
           <hr class="slant"/>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/about" component={About}/>
+            <Route exact path="/about">
+              <Page mdFile={pages.about} />
+            </Route>
             <Route exact path="/journaling">
               <Page mdFile={pages.journaling} />
             </Route>
+            <Route exact path="/dontWorkHard">
+              <Page mdFile={pages.dontWorkHard} />
+            </Route>
+            <Route exact path="/universityAssemblyLine">
+              <Page mdFile={pages.universityAssemblyLine} />
+            </Route>
+            <Route exact path="/dirtyHands">
+              <Page mdFile={pages.dirtyHands} />
+            </Route>
+            <Route exact path="/emerson">
+              <Page mdFile={pages.emerson} />
+            </Route>
+            <Route exact path="/adolos">
+              <Page mdFile={pages.adolos} />
+            </Route>
+            <Route exact path="/community">
+              <Page mdFile={pages.community} />
+            </Route>
+            <Route exact path="/choice">
+              <Page mdFile={pages.choice} />
+            </Route>
+            <Route exact path="/solitudeCovid">
+              <Page mdFile={pages.solitudeCovid} />
+            </Route>
+            <Route exact path="/friendship">
+              <Page mdFile={pages.friendship} />
+            </Route>
+
           </Switch>
       </BrowserRouter>,
   document.getElementById('root')
