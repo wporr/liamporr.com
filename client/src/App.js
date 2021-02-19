@@ -11,7 +11,7 @@ import './main.css';
 
 const Header = () => (
   <header class="overlay" style={{maxWidth: "700px"}}>
-    <Link to='/' style={{marginRight: "5ex"}}>
+    <Link to='/' class="plainLink" style={{marginRight: "5ex"}}>
       <img src={line2} height="75px" alt="logo"/>
     </Link>
     <EmailForm/>
@@ -54,11 +54,11 @@ class EmailForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
-          <p style={{fontSize: 'small', textAlign: 'center'}}><i>Can I sing to you?</i></p>
+          <p style={{textAlign: 'center'}}><i>Can I sing to you?</i></p>
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
-            <input type="email" placeholder="liam@sadb.oys" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
-            <button type="submit" className="btn movable btn-special">Yes.</button>
+            <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
+            <button type="submit" className="btn movable specialBtn">Yes.</button>
           </div>
         </div>
       </form>
@@ -73,8 +73,8 @@ const Home = () => {
       <div class="overlay">
         <img src={girl} style={{maxHeight: "600px", minWidth: "100px"}} alt="beautiful drawing"/>
         <div class="vertical">
-          <Link to='/about'>About</Link>
-          <Link to='./journaling'>Journaling</Link>
+          <Link class="specialLink" to='/about'>About</Link>
+          <Link class="specialLink" to='./journaling'>Journaling</Link>
         </div>
       </div>
     </main>

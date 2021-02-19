@@ -1,10 +1,13 @@
 body {
   margin: 10px;
   background: #f3f3f3;
-  font-family: Courier, monospace;
+  font-family: "Source Serif Pro", serif;
+  font-size: larger;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&display=swap');
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -17,6 +20,33 @@ code {
   font-family: Courier, monospace;
   font-size: 8vh;
   color: red;
+}
+
+.plainLink {
+  text-decoration: underline;
+}
+
+.plainLink::after {
+  background: none;
+}
+
+a {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: .07em;
+  height: .1em;
+  width: 100%;
+  background: linear-gradient(271deg, #ffc1e6, #add0ff, #91f5ff, #fffedb);;
+  z-index: -1;
 }
 
 .horizontal {
@@ -68,12 +98,12 @@ code {
     100% { transform: translateX(-20vw) }
 }
 
-.btn-special {
-  background-image:linear-gradient(271deg, #ffc1e6, #add0ff, #91f5ff, #fffedb);
+.specialBtn {
+  background-image: linear-gradient(271deg, #ffc1e6, #add0ff, #91f5ff, #fffedb);
   transition: transform 0.2s;
 }
 
-.btn-special:hover {
+.specialBtn:hover {
   animation:slidebg 5s linear infinite;
 }
 
