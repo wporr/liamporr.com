@@ -71,7 +71,7 @@ const Home = () => {
   return(
     <main>
       <div class="overlay">
-        <img src={girl} style={{maxHeight: "600px", minWidth: "100px"}} alt="beautiful drawing"/>
+        <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
           <Link class="pageLink" to='./adolos'>My GPT-3 Blog Got 26 Thousand Visitors in 2 Weeks</Link>
