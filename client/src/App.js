@@ -73,17 +73,17 @@ const Home = () => {
       <div class="overlay">
         <img src={girl} style={{maxHeight: "600px", minWidth: "100px"}} alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
-          <Link to='./about'>About</Link>
-          <Link to='./adolos'>My GPT-3 Blog Got 26 Thousand Visitors in 2 Weeks</Link>
-          <Link to='./friendship'>Friendship</Link>
-          <Link to='./journaling'>Journaling</Link>
-          <Link to='./dontWorkHard'>Dont Work Hard</Link>
-          <Link to='./universityAssemblyLine'>The university system has become an assembly line</Link>
-          <Link to='./dirtyHands'>Getting your hands dirty: a case against tech-y startups</Link>
-          <Link to='./emerson'>Ralph Waldo Emerson's guide to getting rich</Link>
-          <Link to='./community'>Why You Need a Community: Opportunity Exposure and the Internet Echo Chamber</Link>
-          <Link to='./choice'>Make a Choice</Link>
-          <Link to='./solitudeCovid'>Solitude During COVID</Link>
+          <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./adolos'>My GPT-3 Blog Got 26 Thousand Visitors in 2 Weeks</Link>
+          <Link class="pageLink" to='./friendship'>Friendship</Link>
+          <Link class="pageLink" to='./journaling'>Journaling</Link>
+          <Link class="pageLink" to='./dontWorkHard'>Dont Work Hard</Link>
+          <Link class="pageLink" to='./universityAssemblyLine'>The university system has become an assembly line</Link>
+          <Link class="pageLink" to='./dirtyHands'>Getting your hands dirty: a case against tech-y startups</Link>
+          <Link class="pageLink" to='./emerson'>Ralph Waldo Emerson's guide to getting rich</Link>
+          <Link class="pageLink" to='./community'>Why You Need a Community: Opportunity Exposure and the Internet Echo Chamber</Link>
+          <Link class="pageLink" to='./choice'>Make a Choice</Link>
+          <Link class="pageLink" to='./solitudeCovid'>Solitude During COVID</Link>
         </div>
       </div>
     </main>

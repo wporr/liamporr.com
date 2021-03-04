@@ -45,6 +45,18 @@ a::after {
   z-index: -1;
 }
 
+.pageLink:hover {
+  background-image:linear-gradient(271deg, #1b7dff, #ff2caa, #38edff, #1b7dff);
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: slidebg 2.5s linear infinite;
+}
+
+.pageLink:after {
+  height: 0;
+  bottom: 0;
+}
+
 .horizontal {
   margin: auto;
   display: flex;
