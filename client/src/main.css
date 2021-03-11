@@ -65,6 +65,10 @@ a::after {
   z-index: -1;
 }
 
+img {
+  max-width: 100%;
+}
+
 .pageLink:hover {
   background-image:linear-gradient(271deg, #1b7dff, #ff2caa, #38edff, #1b7dff);
   color: transparent;
@@ -146,6 +150,10 @@ a::after {
 .slant {
   transform: skewY(.5deg);
   max-width: 900px;
+}
+
+img {
+  max-width: 100%;
 }
 
 hr {
