@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import './main.css';
 
 const Header = () => (
-  <header class="overlay" style={{maxWidth: "700px"}}>
-    <Link to='/' class="plainLink" style={{marginRight: "5ex"}}>
+  <header class="homeHeader" style={{maxWidth: "700px"}}>
+    <Link to='/' class="homeLink">
       <img src={line2} height="75px" alt="logo"/>
     </Link>
     <EmailForm/>
@@ -54,7 +54,7 @@ class EmailForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
-          <p style={{textAlign: 'center'}}><i>Can I sing to you?</i></p>
+          <p class="emailTag"><i>Can I sing to you?</i></p>
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
             <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>

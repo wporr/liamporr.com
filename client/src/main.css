@@ -14,17 +14,13 @@ code {
     monospace;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="homeImg"] {
-    width: 0;
-    height: 0;
-  }
+.homeImg {
+  display: none;
 }
 
-.homeImg {
-  max-height: 600px;
-  min-width: 100px;
+.emailTag {
+  display: none;
+  text-align: center;
 }
 
 .spaceCowboy {
@@ -35,7 +31,13 @@ code {
   color: red;
 }
 
-.plainLink::after {
+.homeLink {
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.homeLink::after {
   background: none;
 }
 
@@ -88,6 +90,14 @@ a::after {
   margin: auto;
   display: flex;
   flex-direction: row;
+}
+
+.homeHeader {
+  width: calc(100% - 30px);
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
@@ -153,4 +163,25 @@ input {
 
 h1 {
   font-size: xx-large;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For mobile phones: */
+  [class*="homeImg"] {
+    display: block;
+    max-height: 600px;
+    min-width: 100px;
+  }
+
+  [class="homeHeader"] {
+    flex-direction: row;
+  }
+
+  [class="homeLink"] {
+    margin-right: 5ex;
+  }
+
+  [class="emailTag"] {
+    display: block;
+  }
 }
