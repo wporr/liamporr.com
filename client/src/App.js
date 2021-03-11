@@ -52,7 +52,7 @@ class EmailForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form class="emailForm" onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
           <p class="emailTag"><i>Can I sing to you?</i></p>
           <div class="horizontal">

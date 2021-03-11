@@ -23,6 +23,11 @@ code {
   text-align: center;
 }
 
+.emailForm {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .spaceCowboy {
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -183,5 +188,9 @@ h1 {
 
   [class="emailTag"] {
     display: block;
+  }
+
+  [class="emailForm"] {
+    margin-left: unset;
   }
 }
