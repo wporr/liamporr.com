@@ -31,7 +31,7 @@ class EmailForm extends React.Component {
   }
 
   handleSubmit(event) {
-    fetch("http://localhost:8000/subscribe", {headers: {'Content-Type': 'application/json'}, method: 'POST', body: JSON.stringify(this.state)})
+    fetch("https://liamporr.com/subscribe", {headers: {'Content-Type': 'application/json'}, method: 'POST', body: JSON.stringify(this.state)})
      .then(response => {
         console.log(response);
         return response.text();
@@ -54,11 +54,11 @@ class EmailForm extends React.Component {
     return (
       <form class="emailForm" onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
-          <p class="emailTag"><i>Can I sing to you?</i></p>
+          <p class="emailTag"><i>Subscribe or perish.</i></p>
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
             <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
-            <button type="submit" className="btn movable specialBtn">Yes.</button>
+            <button type="submit" className="btn movable specialBtn">Sub</button>
           </div>
         </div>
       </form>

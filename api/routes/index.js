@@ -44,7 +44,6 @@ MongoClient.connect(connectionString,
           body = "Anonymous";
         }
         body += " subscribed with email: " + req.body.email;
-        console.log(body);
 
         var mailOptions = {
           from: emailAddress,
@@ -67,7 +66,6 @@ MongoClient.connect(connectionString,
       { email: req.query.email }
     ).then(result => {
         const body = "Email " + req.query.email + " unsubscribed"
-        console.log(body);
 
         /* Send email confirmation */
         var mailOptions = {
