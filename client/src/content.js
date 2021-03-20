@@ -10,6 +10,7 @@ const pages = {
   choice: "content/choice.md",
   solitudeCovid: "content/solitudeCovid.md",
   friendship: "content/friendship.md",
+  youth: "content/youth.md",
 }
 
 export{ pages }

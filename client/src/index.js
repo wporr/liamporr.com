@@ -15,6 +15,9 @@ ReactDOM.render(
             <Route exact path="/about">
               <Page mdFile={pages.about} />
             </Route>
+            <Route exact path="/youth">
+              <Page mdFile={pages.youth} />
+            </Route>
             <Route exact path="/journaling">
               <Page mdFile={pages.journaling} />
             </Route>

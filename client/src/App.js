@@ -54,7 +54,7 @@ class EmailForm extends React.Component {
     return (
       <form class="emailForm" onSubmit={this.handleSubmit.bind(this)}>
         <div class="vertical">
-          <p class="emailTag"><i>Subscribe or perish.</i></p>
+          <p class="emailTag"><i>Subscribe or perish</i></p>
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
             <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
@@ -74,6 +74,7 @@ const Home = () => {
         <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./youth'>I don't want to be old</Link>
           <Link class="pageLink" to='./adolos'>My GPT-3 Blog Got 26 Thousand Visitors in 2 Weeks</Link>
           <Link class="pageLink" to='./friendship'>Friendship</Link>
           <Link class="pageLink" to='./journaling'>Journaling</Link>
