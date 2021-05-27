@@ -23,7 +23,7 @@ But hey, this is just one company. Let’s do another internship and maybe it’
 
 Nope, nope, and nope. This one was even worse. Bigger company, same problem. I didn’t admire my bosses or mentors. I even met the CEO at one point, and felt equally disappointed, thinking “this guy is the head of a massive company, the physical embodiment of a Silicon Valley success story, and I have zero desire to be like him”. They just seemed very.. different from me.
 
-## expectations
+## Expectations
 
 As an adult you have certain expectations— get a job, save up for retirement, get a spouse, make more money, get a house. These expectations are totally made up of course. Nobody is forcing you to do any of these things. The more we play into these artifical games the more they suck us in. Suddenly, it becomes about living in the right neighborhood and having the right interior design, making your kids go to the right schools.
 
@@ -56,3 +56,10 @@ We jump into these 40 hour a week jobs right after college because we want to be
 I think we can learn a thing or two from young people. We cant live ignorant and free of responsibility forever, but there’s no reason why we have to so eagerly toss them aside.
 
 >As long as possible live free and uncommitted. It makes but little difference whether you are committed to a farm or the county jail. - Thoreau
+
+<footer>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="I don't want to be old" />
+<meta name="twitter:image" content="https://liamporr.com/side_by_side.jpeg" />
+</footer>
+
