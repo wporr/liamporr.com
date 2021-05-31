@@ -9,8 +9,16 @@ const escape = require("escape-html");
 
 /* Globals */
 const emailAddress = 'liam@liamporr.com';
+const testEmail = 'porrliam@gmail.com';
 const displayName = "Liam's newsletter";
 const domain = "http://localhost:8000";
+const css = `
+  <style>
+    img {
+      max-width: 95%;
+    }
+  </style>
+`;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -48,7 +56,7 @@ MongoClient.connect(connectionString,
     var answer = await question(`Title: ${title}. Send test email? (y/n) `);
     if (answer.toLowerCase() == 'y') {
       try {
-        await sendNewsletter([{email: emailAddress}], title, marked(body));
+        await sendNewsletter([{email: testEmail}], title, marked(body));
       } catch(error) {
         console.error(error)
       }
@@ -77,8 +85,8 @@ function parseFile(fileName) {
   /* Regex for specifying the title and the terminating
    * character for the title in provided files
    */
-  const titleRe = /#\s[A-Za-z0-9\s]+\n/g;
-  const titleStart = /[A-Za-z0-9]/g;
+  const titleRe = /#\s[A-Za-z0-9:\.\s]+\n/g;
+  const titleStart = /[A-Za-z0-9:]/g;
   const titleTerm = /\n/g;
 
   try {
@@ -108,6 +116,10 @@ function parseFile(fileName) {
 
 /* Function to send newsletter */
 async function sendNewsletter(receivers, title, body) {
+  // Insert inline styling for images, crude but it works
+  body = body.replace(/<img/gi, "<img style='max-width: 95%; height: auto;'");
+  console.log(body)
+
   for (const r of receivers) {
     const unsubscribeLink = "<a href='" + domain +
       "/unsubscribe/?email=" + r.email +

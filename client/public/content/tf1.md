@@ -38,7 +38,7 @@ This time was different. This time I was alone, but I had chosen to do so. This 
 
 This ability, to make new friends and make my own fun, is completely liberating. Suddenly, going to new places doesn’t seem so scary. Venturing into the unknown still isn’t easy: it takes just about all my attention to adjust to a new environment and make some fun of it. But, I can now rest assured in my ability to do so.
 
-Now that I remember these struggles I realize how important they were for my growth. It helped me  understand myself, and the more you’re able to understand yourself, the more confident you become.
+Now that I remember these struggles I realize how important they were for my growth. It helped me understand myself, and the more you’re able to understand yourself, the more confident you become.
 
 Confidence. It’s not something you can pull out of thin air, that’s just ego. Confidence comes when you have a strong sense of self. Confidence is knowing who you are so well that nobody can talk you out of it. You have more assurance about what, how, and why you should be doing what you're doing. When you lack confidence, you become timid, confused, and frustrated when the world gives you signals that are, inevitably, mixed.
 
