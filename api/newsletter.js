@@ -11,7 +11,7 @@ const escape = require("escape-html");
 const emailAddress = 'liam@liamporr.com';
 const testEmail = 'porrliam@gmail.com';
 const displayName = "Liam's newsletter";
-const domain = "http://localhost:8000";
+const domain = "https://liamporr.com";
 const css = `
   <style>
     img {
@@ -29,23 +29,33 @@ const question = util.promisify(rl.question).bind(rl);
 
 /* Connect to email client */
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  pool: true,
+  maxMessages: 'Infinity',
   auth: {
-    user: emailAddress,
-    pass: process.env.EMAIL_PW
+    type: 'OAuth2',
+    user: 'liam@liamporr.com',
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: process.env.REFRESH_TOKEN,
+    accessToken: process.env.ACCESS_TOKEN,
+    expires: process.env.TOKEN_EXPIRY,
   }
 });
 
 /* Connect to mongodb client */
-database = "websiteData"
-connectionString = `mongodb+srv://wporr:${process.env.ATLAS_PW}@mailinglist.wsoci.mongodb.net/${database}?retryWrites=true&w=majority`
+database = "websiteData";
+collection = "testEmails";
+connectionString = `mongodb+srv://wporr:${process.env.ATLAS_PW}@mailinglist.wsoci.mongodb.net/${database}?retryWrites=true&w=majority`;
 
 MongoClient.connect(connectionString,
   { useUnifiedTopology: true })
   .then(async client => {
     console.log("connected to database");
     const db = await client.db(database);
-    receivers = await db.collection('emails').find().toArray();
+    receivers = await db.collection(collection).find().toArray();
 
     /* Read the content to be sent */
     fileName = process.argv[2]; // 0 is 'node', 1 is js file
@@ -118,31 +128,43 @@ function parseFile(fileName) {
 async function sendNewsletter(receivers, title, body) {
   // Insert inline styling for images, crude but it works
   body = body.replace(/<img/gi, "<img style='max-width: 95%; height: auto;'");
-  console.log(body)
+  i = 0;
+  messages = receivers.length;
+  accepted = [];
 
-  for (const r of receivers) {
-    const unsubscribeLink = "<a href='" + domain +
-      "/unsubscribe/?email=" + r.email +
-      "' style='color: #888'>Unsubscribe</a>";
-    const trackerImg = "<img height='0' width='0' src='" + domain +
-      "/open?post=" + escape(title) + "'/>";
-    body += "\n" + unsubscribeLink;
-    body += "\n" + trackerImg;
+  transporter.on("idle", function () {
+    while (transporter.isIdle() && receivers.length) {
+      r = receivers.shift();
+      const unsubscribeLink = "<a href='" + domain +
+        "/unsubscribe/?email=" + r.email +
+        "' style='color: #888'>Unsubscribe</a>";
+      const trackerImg = "<img height='0' width='0' src='" + domain +
+        "/open?post=" + escape(title) + "'/>";
+      senderBody = body + "\n" + unsubscribeLink;
+      senderBody += "\n" + trackerImg;
 
-    var mailOptions = {
-      from: displayName + " <" + emailAddress + ">",
-      to: r.email,
-      subject: title,
-      html: body
+      var mailOptions = {
+        from: displayName + " <" + emailAddress + ">",
+        to: r.email,
+        subject: title,
+        html: senderBody
+      }
+
+      transporter.sendMail(mailOptions, (err, info) => {
+        i++;
+        console.log(err);
+        console.log(info);
+
+        if (err) {
+          console.log("Email to " + i.toString() + "/" + messages + " failed, continuing");
+        } else {
+          accepted.push(info.accepted[0]);
+          console.log("Email " + i.toString() + "/" + messages + " sent.");
+        }
+      });
     }
-
-    const items = await transporter.sendMail(mailOptions);
-    if (items == {} ||
-        items.accepted.length != 1 ||
-        items.accepted[0] != r.email) {
-      console.error("Error, email not accepted");
-      debug("items rejected: ");
-    }
-    debug(toString(items));
-  }
+  });
+  transporter.emit("idle");
+  await question("Hit enter when finished");
+  console.log(accepted);
 }
