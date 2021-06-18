@@ -47,7 +47,7 @@ const transporter = nodemailer.createTransport({
 
 /* Connect to mongodb client */
 database = "websiteData";
-collection = "testEmails";
+collection = "halfEmails";
 connectionString = `mongodb+srv://wporr:${process.env.ATLAS_PW}@mailinglist.wsoci.mongodb.net/${database}?retryWrites=true&w=majority`;
 
 MongoClient.connect(connectionString,
@@ -130,41 +130,52 @@ async function sendNewsletter(receivers, title, body) {
   body = body.replace(/<img/gi, "<img style='max-width: 95%; height: auto;'");
   i = 0;
   messages = receivers.length;
-  accepted = [];
 
-  transporter.on("idle", function () {
-    while (transporter.isIdle() && receivers.length) {
-      r = receivers.shift();
-      const unsubscribeLink = "<a href='" + domain +
-        "/unsubscribe/?email=" + r.email +
-        "' style='color: #888'>Unsubscribe</a>";
-      const trackerImg = "<img height='0' width='0' src='" + domain +
-        "/open?post=" + escape(title) + "'/>";
-      senderBody = body + "\n" + unsubscribeLink;
-      senderBody += "\n" + trackerImg;
-
-      var mailOptions = {
-        from: displayName + " <" + emailAddress + ">",
-        to: r.email,
-        subject: title,
-        html: senderBody
+  const intervalObj = setInterval(async function() {
+    for (_ of Array(45).keys()) {
+      if (!receivers.length) {
+        console.log("finished");
+        return;
       }
 
-      transporter.sendMail(mailOptions, (err, info) => {
-        i++;
-        console.log(err);
-        console.log(info);
+      i++;
+      r = receivers.shift();
 
-        if (err) {
-          console.log("Email to " + i.toString() + "/" + messages + " failed, continuing");
-        } else {
-          accepted.push(info.accepted[0]);
-          console.log("Email " + i.toString() + "/" + messages + " sent.");
+      try {
+        const unsubscribeLink = "<a href='" + domain +
+          "/unsubscribe/?email=" + r.email +
+          "' style='color: #888'>Unsubscribe</a>";
+        const trackerImg = "<img height='0' width='0' src='" + domain +
+          "/open?post=" + escape(title) + "'/>";
+        senderBody = body + "\n" + unsubscribeLink;
+        senderBody += "\n" + trackerImg;
+
+        var mailOptions = {
+          from: displayName + " <" + emailAddress + ">",
+          to: r.email,
+          subject: title,
+          html: senderBody
         }
-      });
+
+        const items = await transporter.sendMail(mailOptions);
+        if (items == {} ||
+            items.accepted.length != 1 ||
+            items.accepted[0] != r.email) {
+          console.error("Error, email not accepted");
+          debug("items rejected: ");
+        }
+        debug(toString(items));
+        console.log("Email " + i.toString() + "/" + messages + " sent.");
+      }
+      catch (err) {
+        console.error(err);
+        console.log("Email to " + r.email + " failed, continuing");
+      }
     }
-  });
-  transporter.emit("idle");
-  await question("Hit enter when finished");
-  console.log(accepted);
+
+    console.log("Waiting 5 minutes to avoid google raitlimiting");
+  }, 1000 * 60 * 5);
+
+  await question("Hit enter when complete");
+  clearInterval(intervalObj);
 }
