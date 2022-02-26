@@ -74,6 +74,7 @@ const Home = () => {
         <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./water'>Get back on that saddle, son.</Link>
           <Link class="pageLink" to='./tf3'>True Freedom Pt. 3: Fear and Loathing in Joshua Tree</Link>
           <Link class="pageLink" to='./tf2'>True Freedom Pt. 2: Fear and Living a Full Life</Link>
           <Link class="pageLink" to='./tf1'>True Freedom Pt. 1: Learning to Trust Myself Again</Link>
