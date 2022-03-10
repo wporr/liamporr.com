@@ -85,6 +85,8 @@ img {
   margin: auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .vertical {
@@ -124,6 +126,7 @@ img {
   padding: .5em 1em;
   border-radius: 0;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 
 @keyframes slidebg {
@@ -167,6 +170,8 @@ input {
   border: 2px solid;
   outline: none;
   margin-right: .5em;
+  margin-bottom: 10px;
+  padding: 5px;
   border-radius: 0;
 }
 

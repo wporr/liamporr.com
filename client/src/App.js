@@ -58,7 +58,7 @@ class EmailForm extends React.Component {
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
             <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
-            <button type="submit" className="btn movable specialBtn">Sub</button>
+            <button type="submit" className="btn movable specialBtn">Subscribe</button>
           </div>
         </div>
       </form>
