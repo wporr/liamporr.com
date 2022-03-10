@@ -1,7 +1,8 @@
-﻿# Get back on that saddle, son.
+# Get back on that saddle, son.
 
 ![image](https://liamporr.com/sleepy.jpeg)
-<span class="caption">How routines make me feel.</span>
+
+*How routines make me feel.*
 
 Routine.
 Wake up to that awful iPhone alarm sound. It may be the worst sound ever created by the likes of men, but nothing gets my ass out of bed faster.
@@ -62,7 +63,7 @@ When I was younger, I started to become paranoid about adult life. When I think 
 
 Gotta make sure I get a good job! Get a good job and I'll be happy.
 
-The reality though, was very different. Many of you who are older and have had shitty jobs and have friends who have shitty jobs know that you don't need a good job to be happy. Many of you have families and friends who love you dearly, and can provide you with much more happiness than any job ever could, so who cares if you're a janitor, or an oilfield worker, or a teacher in one of the worst school districts in the state [1].
+The reality though, was very different. Many of you who are older and have had shitty jobs and have friends who have shitty jobs know that you don't need a good job to be happy. Many of you have families and friends who love you dearly, and can provide you with much more happiness than any job ever could.
 
 It's my own fear of failure that causes a lot of the dissatisfaction I see in the world around me. It's my fear that I wont do enough, that I'll waste my years in life doing the wrong thing. This is where my mind becomes my master, constantly pointing out the ways I could be doing more, and pointing towards other people as an example of what not to do.
 
@@ -73,7 +74,3 @@ I could look at this security guard and be frustrated that he's ruining my morni
 It is not enough to be aware of our default state. We must fight our daily battle to keep ourselves out of it. It's not possible to do it all the time, but we must make a consistent effort to do so. Eventually, our mental masters will slowly lose their grasp on us.
 
 It's not easy. Some of the most spirited people in the world still succumb to their internal masters. David Foster Wallace, the man responsible for this fantastic speech and for this entire essay, was lost to his master.
-
----
-
-[1]: Seriously, according to [Texas School Guide](https://texasschoolguide.org/content/uploads/2019/11/2019-Texas-UPDATED-High-School-Rankings_Statewide.pdf) my town's public high school was ranked 1360 out of 1423 schools in the state. I was fortunate enough to afford the town's private school, otherwise I probably wouldn't be here.

@@ -1,4 +1,4 @@
-﻿# True Freedom Pt. 3: Fear and Loathing in Joshua Tree
+# True Freedom Pt. 3: Fear and Loathing in Joshua Tree
 
 This is a continuation from [part 2](tf2) of my road trip story, but feel free to start here
 
