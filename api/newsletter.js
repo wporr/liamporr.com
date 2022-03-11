@@ -47,23 +47,24 @@ const transporter = nodemailer.createTransport({
 
 /* Connect to mongodb client */
 database = "websiteData";
-collection = "halfEmails";
+collection = "emails";
 connectionString = `mongodb+srv://wporr:${process.env.ATLAS_PW}@mailinglist.wsoci.mongodb.net/${database}?retryWrites=true&w=majority`;
 
 MongoClient.connect(connectionString,
   { useUnifiedTopology: true })
   .then(async client => {
-    console.log("connected to database");
+    console.log("connected to database\n");
     const db = await client.db(database);
     receivers = await db.collection(collection).find().toArray();
 
     /* Read the content to be sent */
     fileName = process.argv[2]; // 0 is 'node', 1 is js file
 
-    const { title, body } = parseFile(fileName);
+    const { title, body } = await parseFile(fileName);
 
     /* Confirm the info before sending */
-    var answer = await question(`Title: ${title}. Send test email? (y/n) `);
+    console.log(`Title: ${title}.`)
+    var answer = await question("Send test email? (y/n)\n");
     if (answer.toLowerCase() == 'y') {
       try {
         await sendNewsletter([{email: testEmail}], title, marked(body));
@@ -71,18 +72,20 @@ MongoClient.connect(connectionString,
         console.error(error)
       }
       process.exit();
-    }
+    } else if (answer.toLowerCase() == 'n') {
+      answer = await question(`Sending prod email. Confirm sending? (y/n) \n`);
+      if (answer.toLowerCase() == 'y') {
+        try {
+          console.log("sending emails\n");
 
-    answer = await question(`Sending prod email. Confirm sending? (y/n) `);
-    if (answer.toLowerCase() == 'y') {
-      try {
-        console.log("sending emails");
-
-        /* Send the emails */
-        // Marked converts the markdown body to html
-        await sendNewsletter(receivers, title, marked(body));
-      } catch(error) {
-        console.error(error)
+          /* Send the emails */
+          // Marked converts the markdown body to html
+          await sendNewsletter(receivers, title, marked(body));
+        } catch(error) {
+          console.error(error)
+        }
+      } else {
+        console.log("aborted.");
       }
     } else {
       console.log("aborted.");
@@ -91,11 +94,11 @@ MongoClient.connect(connectionString,
     process.exit();
 });
 
-function parseFile(fileName) {
+async function parseFile(fileName) {
   /* Regex for specifying the title and the terminating
    * character for the title in provided files
    */
-  const titleRe = /#\s[A-Za-z0-9:\.\s]+\n/g;
+  const titleRe = /#\s[A-Za-z0-9:\.\,\s]+\n/g;
   const titleStart = /[A-Za-z0-9:]/g;
   const titleTerm = /\n/g;
 
@@ -132,49 +135,45 @@ async function sendNewsletter(receivers, title, body) {
   messages = receivers.length;
 
   const intervalObj = setInterval(async function() {
-    for (_ of Array(45).keys()) {
-      if (!receivers.length) {
-        console.log("finished");
-        return;
-      }
-
-      i++;
-      r = receivers.shift();
-
-      try {
-        const unsubscribeLink = "<a href='" + domain +
-          "/unsubscribe/?email=" + r.email +
-          "' style='color: #888'>Unsubscribe</a>";
-        const trackerImg = "<img height='0' width='0' src='" + domain +
-          "/open?post=" + escape(title) + "'/>";
-        senderBody = body + "\n" + unsubscribeLink;
-        senderBody += "\n" + trackerImg;
-
-        var mailOptions = {
-          from: displayName + " <" + emailAddress + ">",
-          to: r.email,
-          subject: title,
-          html: senderBody
-        }
-
-        const items = await transporter.sendMail(mailOptions);
-        if (items == {} ||
-            items.accepted.length != 1 ||
-            items.accepted[0] != r.email) {
-          console.error("Error, email not accepted");
-          debug("items rejected: ");
-        }
-        debug(toString(items));
-        console.log("Email " + i.toString() + "/" + messages + " sent.");
-      }
-      catch (err) {
-        console.error(err);
-        console.log("Email to " + r.email + " failed, continuing");
-      }
+    if (!receivers.length) {
+      console.log("finished");
+      return;
     }
 
-    console.log("Waiting 5 minutes to avoid google raitlimiting");
-  }, 1000 * 60 * 5);
+    i++;
+    r = receivers.shift();
+
+    try {
+      const unsubscribeLink = "<a href='" + domain +
+        "/unsubscribe/?email=" + r.email +
+        "' style='color: #888'>Unsubscribe</a>";
+      const trackerImg = "<img height='0' width='0' src='" + domain +
+        "/open?post=" + escape(title) + "'/>";
+      senderBody = body + "\n" + unsubscribeLink;
+      senderBody += "\n" + trackerImg;
+
+      var mailOptions = {
+        from: displayName + " <" + emailAddress + ">",
+        to: r.email,
+        subject: title,
+        html: senderBody
+      }
+
+      const items = await transporter.sendMail(mailOptions);
+      if (items == {} ||
+          items.accepted.length != 1 ||
+          items.accepted[0] != r.email) {
+        console.error("Error, email not accepted");
+        debug("items rejected: ");
+      }
+      debug(toString(items));
+      console.log(`Email ${i.toString()}/${messages} to ${r.email} sent.`);
+    }
+    catch (err) {
+      console.error(err);
+      console.log(`Email to ${r.email} failed, continuing`);
+    }
+  }, 1000 * 6);
 
   await question("Hit enter when complete");
   clearInterval(intervalObj);

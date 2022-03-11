@@ -1,5 +1,5 @@
 import React from 'react';
-import marked from 'marked';
+import { marked } from 'marked';
 import Path from 'path';
 import drip from './drip.webp';
 import girl from './girl.png';
@@ -58,7 +58,7 @@ class EmailForm extends React.Component {
           <div class="horizontal">
             <input id="name" placeholder="Liam Porr" value={this.name} onChange={this.onNameChange.bind(this)}/>
             <input type="email" placeholder="liam@0x00.sh" value={this.email} onChange={this.onEmailChange.bind(this)} required/>
-            <button type="submit" className="btn movable specialBtn">Sub</button>
+            <button type="submit" className="btn movable specialBtn">Subscribe</button>
           </div>
         </div>
       </form>
@@ -74,6 +74,7 @@ const Home = () => {
         <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./tcot'>How I would describe TCOT with a gun to my head.</Link>
           <Link class="pageLink" to='./water'>Get back on that saddle, son.</Link>
           <Link class="pageLink" to='./tf3'>True Freedom Pt. 3: Fear and Loathing in Joshua Tree</Link>
           <Link class="pageLink" to='./tf2'>True Freedom Pt. 2: Fear and Living a Full Life</Link>
@@ -124,6 +125,7 @@ class Page extends React.Component {
 
     return (
       <section class="content">
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <article dangerouslySetInnerHTML={{__html: markdown}}></article>
       </section>
     );

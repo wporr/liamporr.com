@@ -1,5 +1,6 @@
 const pages = {
   about: "content/about.md",
+  tcot: "content/tcot.md",
   water: "content/water.md",
   tf1: "content/tf1.md",
   tf2: "content/tf2.md",
