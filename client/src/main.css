@@ -127,6 +127,7 @@ img {
   border-radius: 0;
   text-decoration: none;
   margin-bottom: 10px;
+  color: black;
 }
 
 @keyframes slidebg {

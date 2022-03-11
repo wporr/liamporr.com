@@ -1,5 +1,5 @@
 import React from 'react';
-import { marked } from 'marked';
+import marked from 'marked';
 import Path from 'path';
 import drip from './drip.webp';
 import girl from './girl.png';
