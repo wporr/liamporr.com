@@ -1,4 +1,4 @@
-# How I would describe This Corner of Twitter with a gun to my head
+# How I would describe TCOT with a gun to my head
 
 It will happen to at least one of us. One day, the Secret Police start banging at your door, break in, hold you down with a gun and give you 10 seconds to tell them what the fuck TCOT is before you start to look like that guy from Pulp Fiction.
 
