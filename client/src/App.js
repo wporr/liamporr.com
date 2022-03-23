@@ -33,7 +33,6 @@ class EmailForm extends React.Component {
   handleSubmit(event) {
     fetch("https://liamporr.com/subscribe", {headers: {'Content-Type': 'application/json'}, method: 'POST', body: JSON.stringify(this.state)})
      .then(response => {
-        console.log(response);
         return response.text();
       })
   }
@@ -74,6 +73,7 @@ const Home = () => {
         <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./pch'>God\'s road</Link>
           <Link class="pageLink" to='./tcot'>How I would describe TCOT with a gun to my head.</Link>
           <Link class="pageLink" to='./water'>Get back on that saddle, son.</Link>
           <Link class="pageLink" to='./tf3'>True Freedom Pt. 3: Fear and Loathing in Joshua Tree</Link>
