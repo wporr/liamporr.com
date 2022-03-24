@@ -65,7 +65,8 @@ MongoClient.connect(connectionString,
     emailCollection.deleteOne(
       { email: req.query.email }
     ).then(result => {
-        const body = "Email " + req.query.email + " unsubscribed"
+        const body = "Email " + req.query.email + " unsubscribed";
+        console.log(body);
 
         /* Send email confirmation */
         var mailOptions = {
@@ -73,7 +74,7 @@ MongoClient.connect(connectionString,
           to: emailAddress,
           subject: "User Unsubscribed",
           text: body
-        }
+        };
 
         transporter.sendMail(mailOptions, (err, info) => {
           if (err) {

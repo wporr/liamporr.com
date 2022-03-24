@@ -145,7 +145,7 @@ async function sendNewsletter(receivers, title, body) {
 
     try {
       const unsubscribeLink = "<a href='" + domain +
-        "/unsubscribe/?email=" + r.email +
+        "/unsubscribe?email=" + r.email +
         "' style='color: #888'>Unsubscribe</a>";
       const trackerImg = "<img height='0' width='0' src='" + domain +
         "/open?post=" + escape(title) + "'/>";
