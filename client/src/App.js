@@ -73,6 +73,7 @@ const Home = () => {
         <img src={girl} class="homeImg" alt="beautiful drawing"/>
         <div class="vertical" style={{maxWidth: "400px"}}>
           <Link class="pageLink" to='./about'>About</Link>
+          <Link class="pageLink" to='./spdfvr'>Speed Fever</Link>
           <Link class="pageLink" to='./pch'>God's road</Link>
           <Link class="pageLink" to='./tcot'>How I would describe TCOT with a gun to my head.</Link>
           <Link class="pageLink" to='./water'>Get back on that saddle, son.</Link>
