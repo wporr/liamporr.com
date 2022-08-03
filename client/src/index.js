@@ -15,6 +15,9 @@ ReactDOM.render(
             <Route exact path="/about">
               <Page mdFile={pages.about} />
             </Route>
+            <Route exact path="/lair">
+              <Page mdFile={pages.lair} />
+            </Route>
             <Route exact path="/spdfvr">
               <Page mdFile={pages.spdfvr} />
             </Route>

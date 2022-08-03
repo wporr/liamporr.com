@@ -1,5 +1,6 @@
 const pages = {
   about: "content/about.md",
+  lair: "content/lair.md",
   spdfvr: "content/spdfvr.md",
   pch: "content/pch.md",
   tcot: "content/tcot.md",
