@@ -1,6 +1,5 @@
 # CALIFORNIA CULT HUNTING
 
-![image](sleepy.jpeg)
 
 The stretch of land from Livermore up until Sonora county is a wasteland. There's two kinds of small towns: cute small towns with farmer's markets and local artists, and dumpy small towns. These are real American towns where you feel the depression surround you like a fog while you're passing through it. I mean depression in a very physical sense. There's a slowness of movement, like everything there is starved and decaying. Things don't move up but move out like a bell curve that's flattening, taking up space for the sake of it. To alleviate the minutiae of life in these places they have every fast food chain in America. Fast food chains might be the most American product we have to offer the world–various rehashings of the same food, maybe add some different labels on it, flash different colors to keep ourselves entertained. We'd probably be better off without these places, but if you lived in one of these places you'd know just about the most exciting thing that ever happens is a new fast food place opening up. You can pull weeks worth of small talk from a single new Cains location. It may not be wise to remove this source of attention, else they may find other things to talk about.
 
